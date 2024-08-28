@@ -1,7 +1,9 @@
 package com.example.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "productId")
 public class Product {
 
 	@Id
@@ -22,13 +25,8 @@ public class Product {
 	//1st
 	@ManyToOne
 	@JoinColumn(name="category_id", referencedColumnName = "categoryId")
-	@JsonBackReference
 	private Category category;
 	
-	//2nd way
-//	@ManyToOne
-//	@JoinColumn(name="category_id", referencedColumnName = "categoryId")
-//	private Category category;
 
 	public int getProductId() {
 		return productId;

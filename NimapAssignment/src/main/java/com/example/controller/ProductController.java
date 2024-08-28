@@ -27,7 +27,7 @@ public class ProductController {
 	private ProductService productService;
 	
 	//GET all the product
-	//localhost:8080/api/products/?pageNumber=2&pageSize=1
+	//USE THIS => localhost:8080/api/products/?pageNumber=2&pageSize=1
 	@GetMapping("")
 	public ResponseEntity<List<Product>> getAllProduct(
 			@RequestParam(value="pageNumber") Integer pageNumber,

@@ -28,7 +28,7 @@ public class CategoryController {
 	
 	
 	//GET all the categories
-	//localhost:8080/api/categories/?pageNumber=3&pageSize=1
+	//USE THIS => localhost:8080/api/categories/?pageNumber=3&pageSize=1
 	@GetMapping("")
 	public ResponseEntity<List<Category>> getAllCategory(
 			@RequestParam(value="pageNumber") Integer pageNumber, 

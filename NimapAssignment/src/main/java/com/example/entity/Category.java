@@ -3,7 +3,9 @@ package com.example.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -14,6 +16,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "categoryId")
 public class Category {
 
 	@Id
@@ -21,15 +24,10 @@ public class Category {
 	private int categoryId;
 	private String categoryName;
 	
-	//1st
 	@OneToMany(mappedBy = "category",cascade = CascadeType.ALL, orphanRemoval = true)
-	@JsonManagedReference
 	private List<Product> productList = new ArrayList<>();
 
-//	//2nd way
-//	@OneToMany(cascade = CascadeType.ALL)
-//	private List<Product> productList;
-//	
+
 	public int getCategoryId() {
 		return categoryId;
 	}
